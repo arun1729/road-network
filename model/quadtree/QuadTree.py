@@ -3,12 +3,14 @@ import numpy as np
 from matplotlib import pyplot as plt
 import globals 
 
+DEBUG = False
+
 class QuadTree:
 
     # init
     def __init__(self, data, mins, maxs, depth, nodeId):
 
-        print "node id: "+str(nodeId)
+        if DEBUG: print "node id: "+str(nodeId)
         self.mins=mins
         self.maxs=maxs
         self.depth=depth
@@ -33,8 +35,8 @@ class QuadTree:
     def add_square(self):
 
         mids = 0.5 * (self.maxs + self.mins)
-        print self.data
-        print mids
+        if DEBUG: print self.data
+        if DEBUG: print mids
         xmin, ymin = self.mins
         xmax, ymax = self.maxs
         xmid, ymid = mids
@@ -44,12 +46,12 @@ class QuadTree:
         data_q3 = self.data[(self.data[:, 0] >= mids[0]) & (self.data[:, 1] < mids[1])]
         data_q4 = self.data[(self.data[:, 0] >= mids[0]) & (self.data[:, 1] >= mids[1])]
 
-        print "d1:" + str(data_q1)
-        print "d2:" + str(data_q2)
-        print "d3:" + str(data_q3)
-        print "d4:" + str(data_q4)
+        if DEBUG: print "d1:" + str(data_q1)
+        if DEBUG: print "d2:" + str(data_q2)
+        if DEBUG: print "d3:" + str(data_q3)
+        if DEBUG: print "d4:" + str(data_q4)
 
-        print "depth: "+str(self.depth)
+        if DEBUG: print "depth: "+str(self.depth)
 
         nodeId=0
         if not globals.nodeIndex:
@@ -57,7 +59,7 @@ class QuadTree:
         else:
             nodeId=max(globals.nodeIndex)
 
-        print "* nodeid: "+str(nodeId)
+        if DEBUG: print "* nodeid: "+str(nodeId)
         if data_q1.shape[0] > 0:
             nodeId=nodeId+1
             self.children.append(QuadTree(data_q1, [xmin, ymin], [xmid, ymid],self.depth + 1, nodeId))
