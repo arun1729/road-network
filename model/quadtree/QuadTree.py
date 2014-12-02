@@ -1,4 +1,3 @@
-
 import numpy as np
 from matplotlib import pyplot as plt
 import globals 
@@ -41,15 +40,15 @@ class QuadTree:
         xmax, ymax = self.maxs
         xmid, ymid = mids
 
-        data_q1 = self.data[(self.data[:, 0] < mids[0]) & (self.data[:, 1] < mids[1])]
-        data_q2 = self.data[(self.data[:, 0] < mids[0]) & (self.data[:, 1] >= mids[1])]
-        data_q3 = self.data[(self.data[:, 0] >= mids[0]) & (self.data[:, 1] < mids[1])]
-        data_q4 = self.data[(self.data[:, 0] >= mids[0]) & (self.data[:, 1] >= mids[1])]
+        sq_q1 = self.data[(self.data[:, 0] < mids[0]) & (self.data[:, 1] < mids[1])]
+        sq_q2 = self.data[(self.data[:, 0] < mids[0]) & (self.data[:, 1] >= mids[1])]
+        sq_q3 = self.data[(self.data[:, 0] >= mids[0]) & (self.data[:, 1] < mids[1])]
+        sq_q4 = self.data[(self.data[:, 0] >= mids[0]) & (self.data[:, 1] >= mids[1])]
 
-        if DEBUG: print "d1:" + str(data_q1)
-        if DEBUG: print "d2:" + str(data_q2)
-        if DEBUG: print "d3:" + str(data_q3)
-        if DEBUG: print "d4:" + str(data_q4)
+        if DEBUG: print "d1:" + str(sq_q1)
+        if DEBUG: print "d2:" + str(sq_q2)
+        if DEBUG: print "d3:" + str(sq_q3)
+        if DEBUG: print "d4:" + str(sq_q4)
 
         if DEBUG: print "depth: "+str(self.depth)
 
@@ -60,21 +59,21 @@ class QuadTree:
             nodeId=max(globals.nodeIndex)
 
         if DEBUG: print "* nodeid: "+str(nodeId)
-        if data_q1.shape[0] > 0:
+        if sq_q1.shape[0] > 0:
             nodeId=nodeId+1
-            self.children.append(QuadTree(data_q1, [xmin, ymin], [xmid, ymid],self.depth + 1, nodeId))
+            self.children.append(QuadTree(sq_q1, [xmin, ymin], [xmid, ymid],self.depth + 1, nodeId))
                 
-        if data_q2.shape[0] > 0:
+        if sq_q2.shape[0] > 0:
             nodeId=nodeId+1
-            self.children.append(QuadTree(data_q2,[xmin, ymid], [xmid, ymax],self.depth + 1, nodeId))
+            self.children.append(QuadTree(sq_q2,[xmin, ymid], [xmid, ymax],self.depth + 1, nodeId))
                               
-        if data_q3.shape[0] > 0:
+        if sq_q3.shape[0] > 0:
             nodeId=nodeId+1
-            self.children.append(QuadTree(data_q3,[xmid, ymin], [xmax, ymid],self.depth + 1, nodeId))
+            self.children.append(QuadTree(sq_q3,[xmid, ymin], [xmax, ymid],self.depth + 1, nodeId))
                                 
-        if data_q4.shape[0] > 0:
+        if sq_q4.shape[0] > 0:
             nodeId=nodeId+1
-            self.children.append(QuadTree(data_q4,[xmid, ymid], [xmax, ymax],self.depth + 1, nodeId))
+            self.children.append(QuadTree(sq_q4,[xmid, ymid], [xmax, ymax],self.depth + 1, nodeId))
 
     
     def __hash__(self):
