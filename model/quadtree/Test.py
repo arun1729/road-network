@@ -9,7 +9,7 @@ from random import randrange
 globals.init()  
 
 # 2 D plane
-size=20
+size=200 # if aquares are not fully forming increase plane size
 X=Util.getPlane(size)
 
 mins = (0.0, 0.0)
@@ -21,16 +21,16 @@ QT.add_square()
 
 # Util.add_square_at(QT,3)
 
-Util.bfs_print(QT)
-
+# for high density choose ones counter depth with highest number of squares randomly
 while(True):
  	node=randrange(max(globals.nodeIndex))
-	if globals.nodeIndex[node]==8:
+	if globals.nodeIndex[node]==10: # limit on how deep to go
 		break
 
 	Util.add_square_at(QT,node)
 
-	Util.printStats(globals.nodeIndex)
+Util.printStats(globals.nodeIndex)
+Util.bfs_print(QT)
 
 fig = plt.figure(figsize=(10, 10))
 ax = fig.add_subplot(111)
@@ -41,9 +41,16 @@ ax.set_ylim(0, size-1.0)
 for d in range(0,len(globals.nodeIndex)):
     QT.draw_rectangle(ax, depth=d)
 
-plt.show()
+plt.savefig('test.png')
+#plt.show()
+
+print "Done"
 
 # Util.add_square_at(QT,5)
 # Util.add_square_at(QT,6)
 # Util.add_square_at(QT,9)
 # Util.add_square_at(QT,10)
+
+
+
+

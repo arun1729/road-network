@@ -1,6 +1,6 @@
 # utils Quadtree
 import numpy as np
-from collections import Counter
+#from collections import Counter
 from Queue import Queue
 from matplotlib import pyplot as plt
 import itertools, random
@@ -58,7 +58,11 @@ def add_square_at(root,nodeid):
 def printStats(nodeIndex):
     print "*** Tree Stats ***"
     print nodeIndex
-    dn=Counter(nodeIndex.values())
-    print "depth node count:"
-    for depth in dn:
-        print " - "+str(depth)+" : "+str(dn[depth])
+#    dn=Counter(nodeIndex.values())
+#    print "depth node count:"
+#    for depth in dn:
+#        print " - "+str(depth)+" : "+str(dn[depth])
+
+
+
+
