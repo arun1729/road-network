@@ -24,7 +24,7 @@ QT.add_square()
 # for high density choose ones counter depth with highest number of squares randomly
 while(True):
  	node=randrange(max(globals.nodeIndex))
-	if len(globals.nodeIndex)>2: # limit network generation by number of nodes
+	if len(globals.nodeIndex)>10: # limit network generation by number of nodes
 		break
 
 	Util.add_square_at(QT,node)

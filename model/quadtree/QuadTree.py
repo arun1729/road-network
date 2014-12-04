@@ -85,14 +85,47 @@ class QuadTree:
 
     def draw_rectangle(self, ax, depth):
         if depth is None or depth == 0:
+            print "square id: "+str(self.n_nodeId)
             print "min x,y: "+str(self.mins)
             print "sizes: "+str(self.sizes)
             box=Util.getCoordinates(self.mins,self.sizes)
-            print "box p1: "+str(box[0])
-            print "box p1: "+str(box[1])            
-            print "box p1: "+str(box[2])
-            print "box p1: "+str(box[3])
-            
+            base_r_node=max(globals.edges)
+
+            p1=base_r_node+1
+            if tuple(box[0]) not in globals.coord_id:
+                globals.coord_id[tuple(box[0])]=p1
+            else:
+                p1=globals.coord_id[tuple(box[0])]
+
+            p2=base_r_node+2
+            if tuple(box[1]) not in globals.coord_id:
+                globals.coord_id[tuple(box[1])]=p2
+            else:
+                p2=globals.coord_id[tuple(box[1])]
+
+            p3=base_r_node+3
+            if tuple(box[2]) not in globals.coord_id:
+                globals.coord_id[tuple(box[2])]=p3
+            else:
+                p3=globals.coord_id[tuple(box[2])]
+
+            p4=base_r_node+4
+            if tuple(box[3]) not in globals.coord_id:
+                globals.coord_id[tuple(box[3])]=p4
+            else:
+                p4=globals.coord_id[tuple(box[3])]
+
+            print "box p1: "+str(p1)+" - "+str(box[0])
+            print "box p2: "+str(p2)+" - "+str(box[1])            
+            print "box p3: "+str(p3)+" - "+str(box[2])
+            print "box p4: "+str(p4)+" - "+str(box[3])
+
+            globals.edges[base_r_node+1]=[base_r_node+2,base_r_node+3] # 0 -> 1,2
+            globals.edges[base_r_node+2]=[base_r_node+1,base_r_node+4] # 1 -> 1,4
+            globals.edges[base_r_node+3]=[base_r_node+1,base_r_node+4] # 2 -> 1,4
+            globals.edges[base_r_node+4]=[base_r_node+2,base_r_node+3] # 4 -> 2,3
+
+            print "--"
             rect = plt.Rectangle(self.mins, *self.sizes, zorder=2, ec='#000000', fc='none')
             ax.add_patch(rect)
 
