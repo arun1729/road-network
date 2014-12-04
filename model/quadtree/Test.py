@@ -9,7 +9,7 @@ from random import randrange
 globals.init()  
 
 # 2 D plane
-size=200 # if aquares are not fully forming increase plane size
+size=1000 # if aquares are not fully forming increase plane size
 X=Util.getPlane(size)
 
 mins = (0.0, 0.0)
@@ -24,7 +24,7 @@ QT.add_square()
 # for high density choose ones counter depth with highest number of squares randomly
 while(True):
  	node=randrange(max(globals.nodeIndex))
-	if globals.nodeIndex[node]==4: # limit on how deep to go
+	if len(globals.nodeIndex)>2: # limit network generation by number of nodes
 		break
 
 	Util.add_square_at(QT,node)

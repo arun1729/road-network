@@ -1,6 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 import globals 
+import Util
 
 DEBUG = False
 
@@ -84,8 +85,14 @@ class QuadTree:
 
     def draw_rectangle(self, ax, depth):
         if depth is None or depth == 0:
-            # print self.mins
-            # print self.sizes
+            print "min x,y: "+str(self.mins)
+            print "sizes: "+str(self.sizes)
+            box=Util.getCoordinates(self.mins,self.sizes)
+            print "box p1: "+str(box[0])
+            print "box p1: "+str(box[1])            
+            print "box p1: "+str(box[2])
+            print "box p1: "+str(box[3])
+            
             rect = plt.Rectangle(self.mins, *self.sizes, zorder=2, ec='#000000', fc='none')
             ax.add_patch(rect)
 

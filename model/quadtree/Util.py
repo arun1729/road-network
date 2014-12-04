@@ -63,6 +63,19 @@ def printStats(nodeIndex):
 #    for depth in dn:
 #        print " - "+str(depth)+" : "+str(dn[depth])
 
+def getCoordinates(baseXY,boxSize):
+	p1=baseXY
+	p2=(baseXY[0]+boxSize[0],baseXY[1])
+	p3=(baseXY[0],baseXY[1]+boxSize[1])
+	p4=(p2[0],p2[1]+boxSize[1])
+	
+	return (p1,p2,p3,p4)
+	
+
+
+
+
+
 
 
 
