@@ -6,10 +6,10 @@ class Point:
 		    self.x = x
 		    self.y = y
 
-		def distTo(self,x_to,y_to):
-			a=numpy.array((self.x,self.y))
-			a=numpy.array((x_to,y_to))
-			dist = numpy.linalg.norm(a-b)
+		def distTo(self,point):
+			a=np.array((self.x,self.y))
+			b=np.array((point.x,point.y))
+			dist = np.linalg.norm(a-b)
 			return dist
 
 		def __hash__(self):
