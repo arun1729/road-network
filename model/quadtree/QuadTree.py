@@ -120,10 +120,10 @@ class QuadTree:
             print "box p3: "+str(p3)+" - "+str(box[2])
             print "box p4: "+str(p4)+" - "+str(box[3])
 
-            globals.edges[base_r_node+1]=[base_r_node+2,base_r_node+3] # 0 -> 1,2
-            globals.edges[base_r_node+2]=[base_r_node+1,base_r_node+4] # 1 -> 1,4
-            globals.edges[base_r_node+3]=[base_r_node+1,base_r_node+4] # 2 -> 1,4
-            globals.edges[base_r_node+4]=[base_r_node+2,base_r_node+3] # 4 -> 2,3
+            globals.edges[p1]=[p2,p3] # 0 -> 1,2
+            globals.edges[p2]=[p1,p4] # 1 -> 0,4
+            globals.edges[p3]=[p1,p4] # 2 -> 1,4
+            globals.edges[p4]=[p2,p3] # 4 -> 2,3
 
             print "--"
             rect = plt.Rectangle(self.mins, *self.sizes, zorder=2, ec='#000000', fc='none')
