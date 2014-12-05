@@ -4,6 +4,7 @@ import globals
 import Util
 
 DEBUG = False
+DEBUG2 = False
 
 class QuadTree:
 
@@ -85,9 +86,10 @@ class QuadTree:
 
     def draw_rectangle(self, ax, depth):
         if depth is None or depth == 0:
-            print "square id: "+str(self.n_nodeId)
-            print "min x,y: "+str(self.mins)
-            print "sizes: "+str(self.sizes)
+            if DEBUG2: print "square id: "+str(self.n_nodeId)
+            if DEBUG2: print "min x,y: "+str(self.mins)
+            if DEBUG2: print "sizes: "+str(self.sizes)
+            
             box=Util.getCoordinates(self.mins,self.sizes)
             if globals.coord_id:
                 base_point_id=max(globals.coord_id.values())
@@ -118,10 +120,10 @@ class QuadTree:
             else:
                 p4_id=globals.coord_id[box[3]]
 
-            print "box p1: "+str(p1_id)+" - "+str(box[0])
-            print "box p2: "+str(p2_id)+" - "+str(box[1])            
-            print "box p3: "+str(p3_id)+" - "+str(box[2])
-            print "box p4: "+str(p4_id)+" - "+str(box[3])
+            if DEBUG2: print "box p1: "+str(p1_id)+" - "+str(box[0])
+            if DEBUG2: print "box p2: "+str(p2_id)+" - "+str(box[1])            
+            if DEBUG2: print "box p3: "+str(p3_id)+" - "+str(box[2])
+            if DEBUG2: print "box p4: "+str(p4_id)+" - "+str(box[3])
 
             if box[0] in globals.edges:
                 globals.edges[box[0]].update([box[1],box[2]]) 
@@ -143,7 +145,7 @@ class QuadTree:
             else:
                 globals.edges[box[3]]=set([box[1],box[2]]) 
 
-            print "--"
+            if DEBUG2: print "--"
             rect = plt.Rectangle(self.mins, *self.sizes, zorder=2, ec='#000000', fc='none')
             ax.add_patch(rect)
 

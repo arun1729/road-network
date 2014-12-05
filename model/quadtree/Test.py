@@ -24,7 +24,7 @@ QT.add_square()
 # for high density choose ones counter depth with highest number of squares randomly
 while(True):
  	node=randrange(max(globals.nodeIndex))
-	if len(globals.nodeIndex)>10: # limit network generation by number of nodes
+	if len(globals.nodeIndex)>100: # limit network generation by number of nodes
 		break
 
 	Util.add_square_at(QT,node)
@@ -37,16 +37,30 @@ ax = fig.add_subplot(111)
 ax.set_xlim(0, size-1.0)
 ax.set_ylim(0, size-1.0)
 
-# for each depth
+# for each depth generate squares
+
 for d in range(0,len(globals.nodeIndex)):
     QT.draw_rectangle(ax, depth=d)
 
-for point in globals.edges:
-	for edge in globals.edges[point]:
-		print str(globals.coord_id[point])+" - "+str(globals.coord_id[edge]) +" - "+ str(point.distTo(edge))
+print "writing data to files..."
+fn = open('node-list','w')
+fe = open('edge-list','w')
 
-plt.savefig('test.png')
-#plt.show()
+edgeCount=0
+for point in globals.edges:
+	if point in globals.coord_id:
+		fn.write(str(globals.coord_id[point])+","+str(point.x)+","+str(point.y)+"\n")
+
+	for edge in globals.edges[point]:
+		fe.write(str(globals.coord_id[point])+","+str(globals.coord_id[edge]) +","+ str(point.distTo(edge))+"\n")
+		edgeCount=edgeCount+1
+
+fn.close()
+fe.close()
+
+print "# of edges: "+str(edgeCount)
+
+plt.savefig('rand-quad-road-network.png')
 
 print "Done"
 
