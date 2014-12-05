@@ -5,6 +5,7 @@ class Point:
 		def __init__(self,x,y):
 		    self.x = x
 		    self.y = y
+		    self.pointID=""
 
 		def distTo(self,point):
 			a=np.array((self.x,self.y))
@@ -12,11 +13,17 @@ class Point:
 			dist = np.linalg.norm(a-b)
 			return dist
 
+		def setID(self,ID):
+			self.pointID=ID
+
+		def getID():
+			return self.pointID
+
 		def __hash__(self):
 			hashxy = 7
 			hashxy = 71 * hashxy + self.x;
 			hashxy = 71 * hashxy + self.y;
-			return hashxy
+			return int(hashxy)
 
 		def __eq__(self, other):
 			return (self.x,self.y) == (other.x,other.y) 

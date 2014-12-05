@@ -4,6 +4,7 @@ import numpy as np
 from Queue import Queue
 from matplotlib import pyplot as plt
 import itertools, random
+from Point import Point
 
 def getPlane(size):
     X=[]
@@ -64,10 +65,10 @@ def printStats(nodeIndex):
 #        print " - "+str(depth)+" : "+str(dn[depth])
 
 def getCoordinates(baseXY,boxSize):
-	p1=baseXY
-	p2=(baseXY[0]+boxSize[0],baseXY[1])
-	p3=(baseXY[0],baseXY[1]+boxSize[1])
-	p4=(p2[0],p2[1]+boxSize[1])
+	p1=Point(baseXY[0],baseXY[1])
+	p2=Point(baseXY[0]+boxSize[0],baseXY[1])
+	p3=Point(baseXY[0],baseXY[1]+boxSize[1])
+	p4=Point(p2.x,p2.y+boxSize[1])
 	
 	return (p1,p2,p3,p4)
 	

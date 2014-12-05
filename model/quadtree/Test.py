@@ -41,6 +41,10 @@ ax.set_ylim(0, size-1.0)
 for d in range(0,len(globals.nodeIndex)):
     QT.draw_rectangle(ax, depth=d)
 
+for point in globals.edges:
+	for edge in globals.edges[point]:
+		print str(globals.coord_id[point])+" - "+str(globals.coord_id[edge]) +" - "+ str(point.distTo(edge))
+
 plt.savefig('test.png')
 #plt.show()
 

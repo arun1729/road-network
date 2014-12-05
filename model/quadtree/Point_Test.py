@@ -17,3 +17,4 @@ print p1==p3
 print p1.distTo(p3)
 
 print p1.distTo(p2)
+
