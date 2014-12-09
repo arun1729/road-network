@@ -89,7 +89,7 @@ class QuadTree:
             if DEBUG2: print "square id: "+str(self.n_nodeId)
             if DEBUG2: print "min x,y: "+str(self.mins)
             if DEBUG2: print "sizes: "+str(self.sizes)
-            
+
             box=Util.getCoordinates(self.mins,self.sizes)
             if globals.coord_id:
                 base_point_id=max(globals.coord_id.values())
@@ -126,22 +126,58 @@ class QuadTree:
             if DEBUG2: print "box p4: "+str(p4_id)+" - "+str(box[3])
 
             if box[0] in globals.edges:
+                rm_list=[]
+                for p in globals.edges[box[0]]:
+                    if p.distTo(box[0]) > p.distTo(box[1]) or p.distTo(box[0]) > p.distTo(box[2]):
+                        rm_list.append(p)
+                
+                for p in rm_list:
+                    globals.edges[box[0]].remove(p)
+
                 globals.edges[box[0]].update([box[1],box[2]]) 
+
             else:
                 globals.edges[box[0]]=set([box[1],box[2]]) 
 
             if box[1] in globals.edges:
+                rm_list=[]
+                for p in globals.edges[box[1]]:
+                    if p.distTo(box[1]) > p.distTo(box[0]) or p.distTo(box[1]) > p.distTo(box[3]):
+                        rm_list.append(p)
+
+                for p in rm_list:
+                    globals.edges[box[1]].remove(p)
+
                 globals.edges[box[1]].update([box[0],box[3]]) 
+
             else:
                 globals.edges[box[1]]=set([box[0],box[3]]) 
 
             if box[2] in globals.edges:
+                rm_list=[]
+                for p in globals.edges[box[2]]:
+                    if p.distTo(box[2]) > p.distTo(box[0]) or p.distTo(box[2]) > p.distTo(box[3]):
+                        rm_list.append(p)
+                
+                for p in rm_list:
+                    globals.edges[box[2]].remove(p)
+
                 globals.edges[box[2]].update([box[0],box[3]])
+
             else:
                 globals.edges[box[2]]=set([box[0],box[3]]) 
 
             if box[3] in globals.edges:
+                rm_list=[]
+                for p in globals.edges[box[3]]:
+                    if p.distTo(box[3]) > p.distTo(box[1]) or p.distTo(box[3]) > p.distTo(box[2]):
+                        rm_list.append(p)
+
+                for p in rm_list:
+                    globals.edges[box[3]].remove(p)
+
                 globals.edges[box[3]].update([box[1],box[2]]) 
+
             else:
                 globals.edges[box[3]]=set([box[1],box[2]]) 
 

@@ -73,6 +73,14 @@ def getCoordinates(baseXY,boxSize):
 	return (p1,p2,p3,p4)
 	
 
+def getBetaInt(alpha,beta,m,maxv):
+    beta=int(np.random.beta(alpha,beta,1)[0]*m)
+    while(beta>maxv):
+        print beta
+        beta=int(np.random.beta(alpha,beta,1)[0]*m)
+
+    return beta
+
 
 
 
