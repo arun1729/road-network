@@ -1,17 +1,17 @@
 # QuadTree Model for generating random road network
 
-** QuadTree Model **
+## QuadTree Model
 Eisenstat introduces random road network generation using QuadTree data structure in [Eis10 ]. This project
 implements that model in python and can be used to generate random road network of varying sizes.
 
-** QuadTree implementation **
+## QuadTree implementation
 The main component of the model is the Quadtree data structure. Quadtree is a tree data structure similar
 to a binary tree with the difference that each node could have up to four children instead of two. In this
 implementation each node either has four children or no children. The first node in the tree forms the initial
 plane. Each node in the tree represents a square and its four children represent the division of the square
 into four quadrants. Squares are added to the tree by recursively dividing squares into four quadrants.
 
-** Road network and coordinate generation **
+## Road network and coordinate generation
 Each node in the tree represents a square in a plane. For a given number n of nodes, the squares are randomly divided
 into four quadrants, i.e. add four children to leaf nodes in the QuadTree. Each edge of the square forms
 a road connecting two points. The Point class represents a point in the 2 dimensional
