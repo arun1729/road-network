@@ -1,4 +1,4 @@
-# QuadTree Model for generating random road network
+# QuadTree Model for generating random road networks
 
 ![ScreenShot](/sample-network.png?raw=true)
 
