@@ -1,5 +1,7 @@
 # QuadTree Model for generating random road network
 
+![Alt text](road-network/blob/master/sample-network.png?raw=true "Optional Title")
+
 ## QuadTree Model
 Eisenstat introduces random road network generation using QuadTree data structure in [Eis10 ]. This project
 implements that model in python and can be used to generate random road network of varying sizes.
