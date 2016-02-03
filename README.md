@@ -25,5 +25,7 @@ distance between them are calculated. Additionally, there are utility methods to
 nodes to specific nodes in the tree and print statistics. To visualize the generated road network there is
 a utility to plot the network using Matplotlib
 
+License: MIT License
+
 [Eis10] David Eisenstat. “Random road networks: the quadtree model”. In: CoRR abs/1008.4916 (2010).
 url: http://arxiv.org/abs/1008.4916.
