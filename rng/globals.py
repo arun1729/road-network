@@ -2,8 +2,8 @@
 
 def init():
 	# QuadTree Node
-	global nodeIndex
-	nodeIndex=dict()
+	global node_index
+	node_index=dict()
 
 	global edges
 	edges=dict()

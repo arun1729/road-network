@@ -8,16 +8,15 @@ DEBUG2 = False
 
 class QuadTree:
 
-    # init
     def __init__(self, data, mins, maxs, depth, nodeId):
 
         if DEBUG: print "node id: "+str(nodeId)
         self.mins=mins
         self.maxs=maxs
         self.depth=depth
-        self.n_nodeId=nodeId
+        self.n_node_id=nodeId
         # update node Index
-        globals.nodeIndex[nodeId]=depth
+        globals.node_index[nodeId]=depth
         self.data = np.asarray(data)
 
         assert self.data.shape[1] == 2
@@ -55,12 +54,12 @@ class QuadTree:
         if DEBUG: print "depth: "+str(self.depth)
 
         nodeId=0
-        if not globals.nodeIndex:
-            nodeid=0
+        if not globals.node_index:
+            nodeId=0
         else:
-            nodeId=max(globals.nodeIndex)
+            nodeId=max(globals.node_index)
 
-        if DEBUG: print "* nodeid: "+str(nodeId)
+        if DEBUG: print "* node id: "+str(nodeId)
         if sq_q1.shape[0] > 0:
             nodeId=nodeId+1
             self.children.append(QuadTree(sq_q1, [xmin, ymin], [xmid, ymid],self.depth + 1, nodeId))
@@ -79,14 +78,14 @@ class QuadTree:
 
     
     def __hash__(self):
-        return hash(self.n_nodeId)
+        return hash(self.n_node_id)
 
     def __eq__(self, other):
-        return (self.n_nodeId) == (other.n_nodeId)                           
+        return (self.n_node_id) == (other.n_node_id)
 
     def draw_rectangle(self, ax, depth):
         if depth is None or depth == 0:
-            if DEBUG2: print "square id: "+str(self.n_nodeId)
+            if DEBUG2: print "square id: "+str(self.n_node_id)
             if DEBUG2: print "min x,y: "+str(self.mins)
             if DEBUG2: print "sizes: "+str(self.sizes)
 
@@ -188,12 +187,3 @@ class QuadTree:
         if depth is None or depth > 0:
             for child in self.children:
                 child.draw_rectangle(ax, depth - 1)
-
-
-
-
-
-
-
-
-
