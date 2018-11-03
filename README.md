@@ -16,7 +16,7 @@ Generating road network
 generating squares...
 writing data to files...
 # of edges: 1086
-generate road network image at: /Users/armahend/git/road-network/rng/rand-quad-road-network.png
+generate road network image at: /path/to/your/dir/road-network/rng/rand-quad-road-network.png
 Done
 ```
 
