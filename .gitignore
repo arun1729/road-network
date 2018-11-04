@@ -2,6 +2,7 @@ rand-quad-road-network.png
 .DS_Store
 rng/*.pyc
 test/*.pyc
+.idea
 .idea/misc.xml
 .idea/modules.xml
 .idea/road-network.iml
