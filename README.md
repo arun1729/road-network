@@ -37,6 +37,11 @@ implementation each node either has four children or no children. The first node
 plane. Each node in the tree represents a square and its four children represent the division of the square
 into four quadrants. Squares are added to the tree by recursively dividing squares into four quadrants.
 
+This image from Wikipedia shows how an image is represented using a QuadTree:
+![quadImage](https://en.wikipedia.org/wiki/Quadtree#/media/File:Quad_tree_bitmap.svg "")
+
+[QuadTree Wikipedia](https://en.wikipedia.org/wiki/Quadtree)
+
 ## Road network and coordinate generation
 Each node in the tree represents a square in a plane. For a given number n of nodes, the squares are randomly divided
 into four quadrants, i.e. add four children to leaf nodes in the QuadTree. Each edge of the square forms
