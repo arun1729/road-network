@@ -6,7 +6,7 @@ import Util
 DEBUG = False
 DEBUG2 = False
 
-class QuadTree:
+class QuadTree(object):
 
     def __init__(self, data, mins, maxs, depth, nodeId):
 
@@ -33,7 +33,6 @@ class QuadTree:
         self.children = []
 
     def add_square(self):
-
         mids = 0.5 * (self.maxs + self.mins)
         if DEBUG: print self.data
         if DEBUG: print mids

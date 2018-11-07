@@ -37,7 +37,7 @@ def main(size=10, max_nodes=800):
 
 		Util.add_square_at(QT,node)
 
-	Util.printStats(globals.node_index)
+	#Util.printStats(globals.node_index)
 	#Util.bfs_print(QT)
 
 	fig = plt.figure(figsize=(10, 10))
