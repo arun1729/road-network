@@ -38,7 +38,7 @@ plane. Each node in the tree represents a square and its four children represent
 into four quadrants. Squares are added to the tree by recursively dividing squares into four quadrants.
 
 This image from Wikipedia shows how an image is represented using a QuadTree:
-![quadImage](https://en.wikipedia.org/wiki/Quadtree#/media/File:Quad_tree_bitmap.svg "")
+![quadImage](https://upload.wikimedia.org/wikipedia/commons/a/a0/Quad_tree_bitmap.svg)
 
 [QuadTree Wikipedia](https://en.wikipedia.org/wiki/Quadtree)
 
