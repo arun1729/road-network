@@ -60,4 +60,3 @@ License: MIT License
 [Eis10] David Eisenstat. “Random road networks: the quadtree model”. In: CoRR abs/1008.4916 (2010).
 url: http://arxiv.org/abs/1008.4916.
 
-[![a](https://ga-beacon.appspot.com/UA-130066281-1/road-networkl)](https://github.com/arun1729/road-network)
